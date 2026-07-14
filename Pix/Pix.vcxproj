@@ -172,10 +172,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CmdDrawPixel.cpp" />
+    <ClCompile Include="CmdSetColor.cpp" />
     <ClCompile Include="CmdSetResolution.cpp" />
     <ClCompile Include="CmdVarFloat.cpp" />
     <ClCompile Include="CommandDictionary.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
+    <ClCompile Include="MathHelper.h" />
     <ClCompile Include="PixEditor.cpp" />
     <ClCompile Include="Rasterizer.cpp" />
     <ClCompile Include="ScriptParser.cpp" />
@@ -191,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdDrawPixel.h" />
+    <ClInclude Include="CmdSetColor.h" />
     <ClInclude Include="CmdSetResolution.h" />
     <ClInclude Include="CmdVarFloat.h" />
     <ClInclude Include="Command.h" />
@@ -201,6 +205,8 @@
     <ClInclude Include="ScriptParser.h" />
     <ClInclude Include="TextEditor.h" />
     <ClInclude Include="VariableCache.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Vector3.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
