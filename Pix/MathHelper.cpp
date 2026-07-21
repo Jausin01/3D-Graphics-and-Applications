@@ -3,52 +3,52 @@
 #include "MathHelper.h"
 #include <cmath>
 
-bool CheckEqual(float a, float b)
+bool MathHelper::CheckEqual(float a, float b)
 {
 	return abs(a - b) < 0.001f;
 }
 
-float MagnitudeSqr(const Vector2& v)
+float MathHelper::MagnitudeSqr(const Vector2& v)
 {
 	return v.x * v.x + v.y * v.y;
 }
 
-float MagnitudeSqr(const Vector3& v)
+float MathHelper::MagnitudeSqr(const Vector3& v)
 {
 	return v.x * v.x + v.y * v.y + v.z * v.z;
 }
 
-float Magnitude(const Vector2& v)
+float MathHelper::Magnitude(const Vector2& v)
 {
 	return sqrt(MagnitudeSqr(v));
 }
 
-float Magnitude(const Vector3& v)
+float MathHelper::Magnitude(const Vector3& v)
 {
 	return sqrt(MagnitudeSqr(v));
 }
 
-Vector2 Normalize(const Vector2& v)
+Vector2 MathHelper::Normalize(const Vector2& v)
 {
 	return v / Magnitude(v);
 }
 
-Vector3 Normalize(const Vector3& v)
+Vector3 MathHelper::Normalize(const Vector3& v)
 {
 	return v / Magnitude(v);
 }
 
-float Dot(const Vector2& a, const Vector2& b)
+float MathHelper::Dot(const Vector2& a, const Vector2& b)
 {
 	return a.x * b.x + a.y * b.y;
 }
 
-float Dot(const Vector3& a, const Vector3& b)
+float MathHelper::Dot(const Vector3& a, const Vector3& b)
 {
 	return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
-Vector3 Cross(const Vector3& a, const Vector3& b)
+Vector3 MathHelper::Cross(const Vector3& a, const Vector3& b)
 {
 	return
 	{
