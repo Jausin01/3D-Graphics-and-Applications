@@ -1,8 +1,11 @@
+C:\Quarter5Backup\3D Applications\Pix\Pix\Camera.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Camera.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\Clipper.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Clipper.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdBeginDraw.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdBeginDraw.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\CmdCamera.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdCamera.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdDrawPixel.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdDrawPixel.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdEndDraw.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdEndDraw.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdEndDraw.h;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdEndDraw.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\CmdMatrixStack.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdMatrixStack.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdSetClipping.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdSetClipping.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdSetColor.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdSetColor.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdSetFillMode.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdSetFillMode.obj
@@ -15,6 +18,7 @@ C:\Quarter5Backup\3D Applications\Pix\Pix\CommandDictionary.cpp;C:\Quarter5Backu
 C:\Quarter5Backup\3D Applications\Pix\Pix\Graphics.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Graphics.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\MathHelper.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\MathHelper.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\MathHelper.h;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\MathHelper.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\MatrixStack.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\MatrixStack.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\PixEditor.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\PixEditor.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\PrimitivesManager.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\PrimitivesManager.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\Rasterizer.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Rasterizer.obj
