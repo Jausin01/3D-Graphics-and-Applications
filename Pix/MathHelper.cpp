@@ -1,8 +1,5 @@
-#pragma once
-
 #include "MathHelper.h"
 #include <cmath>
-#include "Vector3.h"
 
 bool MathHelper::CheckEqual(float a, float b)
 {

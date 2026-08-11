@@ -11,7 +11,11 @@
 #include "CmdSetViewport.h"
 #include "CmdSetClipping.h"
 #include "CmdMatrixStack.h"
+#include "CmdSetCullMode.h"
 #include "CmdCamera.h"
+#include "CmdVarBool.h"
+#include "CmdVarInt.h"
+#include "CmdEnableDepth.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -28,7 +32,8 @@ CommandDictionary::CommandDictionary()
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
-	
+	RegisterCommand<CmdVarBool>();
+	RegisterCommand<CmdVarInt>();
 
 	RegisterCommand<CmdSetViewport>();
 	RegisterCommand<CmdSetClipping>();
@@ -58,6 +63,9 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetCameraFar>();
 	RegisterCommand<CmdSetCameraNear>();
 	RegisterCommand<CmdSetCameraFov>();
+
+	RegisterCommand<CmdSetCullMode>();
+	RegisterCommand<CmdEnableDepth>();
 	
 }
 

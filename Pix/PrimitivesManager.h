@@ -12,10 +12,21 @@ enum class Topology
 	Triangle
 };
 
+enum class CullMode
+{
+	None, // No Culling Used
+	Back, // cull anything facing away from the camera
+	Front, // Cull Anything Facing the Camera
+
+};
+
 class PrimitivesManager
 {
 public:
 	static PrimitivesManager* Get();
+
+	void OnNewFrame();
+	void SetCullMode(CullMode mode);
 
 	// Start Accepting Vertices
 	bool BeginDraw(Topology topology, bool applyTransform);
@@ -30,6 +41,7 @@ private:
 	std::vector<Vertex> mVertexBuffer;
 	Topology mTopology = Topology::Point;
 	bool mDrawBegin = false;
+	CullMode mCullMode = CullMode::None;
 	bool mApplyTransform = false;
 
 

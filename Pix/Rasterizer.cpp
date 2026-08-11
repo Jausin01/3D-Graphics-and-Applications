@@ -1,4 +1,5 @@
 #include "Rasterizer.h"
+#include "DepthBuffer.h"
 
 // funtion for drawing a line where the slope is <= 1
 // left is the smaller x position, right is highest x position
@@ -55,7 +56,12 @@ void Rasterizer::DrawPoint(int x, int y)
 
 void Rasterizer::DrawPoint(const Vertex& v)
 {
-	X::DrawPixel(v.pos.x, v.pos.y, v.color);
+	// if screen pos (x,y) has a closer z values, render, otherwise skip.
+	if (DepthBuffer::Get()->CheckDepthBuffer(v.pos.x, v.pos.y, v.pos.z))
+	{
+		X::DrawPixel(v.pos.x, v.pos.y, v.color);
+	}
+	
 }
 
 void Rasterizer::DrawLine(const Vertex& a, const Vertex& b)

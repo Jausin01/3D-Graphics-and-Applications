@@ -22,12 +22,54 @@ namespace
 		};
 
 	}
+
+	Vector3 CreateFaceNormal(const std::vector<Vertex>& triangle)
+	{
+		// take b-a cross c-a
+		const Vector3& a = triangle[0].pos;
+		const Vector3& b = triangle[1].pos;
+		const Vector3& c = triangle[2].pos;
+		Vector3 norm = MathHelper::Normalize(MathHelper::Cross((b-a),(c-a)));
+		return norm;
+	}
+
+	bool CullTriangle(CullMode mode, const std::vector<Vertex>& triangle)
+	{
+		if (mode == CullMode::None)
+		{
+			return false;
+		}
+		Vector3 faceNormal = CreateFaceNormal(triangle);
+		if (mode == CullMode::Back)
+		{
+			return faceNormal.z > 0.0f;
+		}
+		if (mode == CullMode::Front)
+		{
+			return faceNormal.z < 0.0f;
+		}
+
+		return false;
+	}
+
 }
 
 PrimitivesManager::PrimitivesManager()
 {
 
 }
+
+void PrimitivesManager::OnNewFrame()
+{
+	mCullMode = CullMode::None;
+
+}
+
+void PrimitivesManager::SetCullMode(CullMode mode)
+{
+	mCullMode = mode;
+}
+
 
 bool PrimitivesManager::BeginDraw(Topology topology, bool applyTransform)
 {
@@ -63,7 +105,9 @@ void PrimitivesManager::EndDraw()
 	// screen space matrix from the screen
 	Matrix4 matScreen = GetScreenTransform();
 	// full transformation pipeline
-	Matrix4 matFinal = matWorld * matView * matProj * matScreen;
+	//Matrix4 matFinal = matWorld * matView * matProj * matScreen;
+	// transformation pipeline only to NDC Space
+	Matrix4 matNDCSpace = matWorld * matView * matProj;
 
 	switch (mTopology)
 	{
@@ -103,10 +147,28 @@ void PrimitivesManager::EndDraw()
 			};
 			if (mApplyTransform)
 			{
+				// transform to NDC Space, then check Facing to see if you can draw, then draw.
+				// use 3 points of triangle to make a normal direction 
+				// // check the nromal if it should be culled, proceed or cancel
+				for (size_t t = 0; t < triangle.size(); ++t)
+				{
+					// transform all position to NDC
+					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matNDCSpace);
+
+				}
+
+				// triangle in NDC space, if cull mode says to cull, contininue, otherwise render.
+				if (CullTriangle(mCullMode, triangle))
+				{
+					continue;
+				}
+					
+
 				// transofmratiion pipeline (matfinal, transforms from local to screen space)
 				for (size_t t = 0; t < triangle.size(); ++t)
 				{
-					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matFinal);
+					// uf akready in ndc space, transform again just with the remaining matrices (matScreen)
+					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matScreen);
 					// after converting to screen space, make sure x and y are whole numers
 					MathHelper::FlattenVectorScreenCoord(triangle[t].pos);
 				}
@@ -131,3 +193,5 @@ PrimitivesManager* PrimitivesManager::Get()
 	static PrimitivesManager sInstance;
 	return &sInstance;
 }
+
+
