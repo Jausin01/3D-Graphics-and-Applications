@@ -3,6 +3,7 @@
 #include "Clipper.h"
 #include "MatrixStack.h"
 #include "Camera.h"
+#include "LightManager.h"
 
 extern float gResolutionX;
 extern float gResolutionY;
@@ -61,13 +62,19 @@ PrimitivesManager::PrimitivesManager()
 
 void PrimitivesManager::OnNewFrame()
 {
-	mCullMode = CullMode::None;
+	mCullMode = CullMode::Back;
+	mCorrectUV = false;
 
 }
 
 void PrimitivesManager::SetCullMode(CullMode mode)
 {
 	mCullMode = mode;
+}
+
+void PrimitivesManager::SetCorrectUV(bool correctUV)
+{
+	mCorrectUV = correctUV;
 }
 
 
@@ -107,7 +114,9 @@ void PrimitivesManager::EndDraw()
 	// full transformation pipeline
 	//Matrix4 matFinal = matWorld * matView * matProj * matScreen;
 	// transformation pipeline only to NDC Space
-	Matrix4 matNDCSpace = matWorld * matView * matProj;
+	Matrix4 matNDCSpace = matView * matProj;
+
+	ShadeMode shadeMode = Rasterizer::Get()->GetShadeMode();
 
 	switch (mTopology)
 	{
@@ -147,6 +156,67 @@ void PrimitivesManager::EndDraw()
 			};
 			if (mApplyTransform)
 			{
+				// local space
+				// add nromals to the vertices (reminder at this pount we are in local space
+				if (MathHelper::CheckEqual(MathHelper::MagnitudeSqr(triangle[0].norm), 0.0f))
+				{
+					Vector3 faceNorm = CreateFaceNormal(triangle);
+					for (std::size_t t = 0; t < triangle.size(); ++t)
+					{
+						triangle[t].norm = faceNorm;
+					}
+				}
+				
+
+
+
+				// mat world to transform into world space
+				// lighting is done in world space
+				// World Space
+				for (size_t t = 0; t < triangle.size(); ++t)
+				{
+					// transform all position to world
+					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matWorld);
+					triangle[t].worldPos = triangle[t].pos;
+					triangle[t].norm = MathHelper::TransformNormal(triangle[t].norm, matWorld);
+
+				}
+
+				// do not do flat/gouroud if color is uv
+				if (triangle[0].color.z >= 0.0f)
+				{
+					if (shadeMode == ShadeMode::Flat)
+					{
+						X::Color lightColor = LightManager::Get()->ComputeLightColor(triangle[0].pos, triangle[0].norm);
+						triangle[0].color *= lightColor;
+						triangle[0].color *= lightColor;
+						triangle[0].color *= lightColor;
+					}
+					else if (shadeMode == ShadeMode::Gouraud)
+					{
+						for (size_t t = 0; t < triangle.size(); ++t)
+						{
+							// apply light color to the vertices
+							triangle[t].color *= LightManager::Get()->ComputeLightColor(triangle[t].pos, triangle[t].norm);
+
+						}
+					}
+				}
+				else if (mCorrectUV)
+				{
+					// apply correct uv in viewpsace
+					// go from worldspace to viewspace is multiply by matview
+					for (uint32_t t = 0; t < triangle.size(); ++t)
+					{
+						Vector3 viewSpace = MathHelper::TransformCoord(triangle[t].worldPos, matView);
+						triangle[t].color.x /= viewSpace.z;
+						triangle[t].color.y /= viewSpace.z;
+						triangle[t].color.w = 1.0f /viewSpace.z;
+					}
+				
+				}
+
+				// NDC SPACE
 				// transform to NDC Space, then check Facing to see if you can draw, then draw.
 				// use 3 points of triangle to make a normal direction 
 				// // check the nromal if it should be culled, proceed or cancel

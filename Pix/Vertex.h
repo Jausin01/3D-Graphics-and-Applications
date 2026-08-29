@@ -7,6 +7,9 @@ struct Vertex
 {
 	Vector3 pos; // position of the vertex
 	X::Color color; // Color of the vertex
+	// needed for lighting calc
+	Vector3 norm;
+	Vector3 worldPos;
 };
 
 inline Vector3 LerpPosition(const Vector3& a, const Vector3& b, float t)
@@ -17,6 +20,16 @@ inline Vector3 LerpPosition(const Vector3& a, const Vector3& b, float t)
 		a.y + (b.y - a.y) * t,
 		a.z + (b.z - a.z) * t
 	};
+}
+
+inline Vector3 LerpNormal(const Vector3& a, const Vector3& b, float t)
+{
+	return MathHelper::Normalize(
+	{
+		a.x + (b.x - a.x) * t,
+		a.y + (b.y - a.y) * t,
+		a.z + (b.z - a.z) * t,
+	});
 }
 
 inline X::Color LerpColor(const X::Color& a, const X::Color& b, float t)
@@ -35,6 +48,8 @@ inline Vertex LerpVertex(const Vertex& a, const Vertex& b, float t)
 	Vertex v;
 	v.pos = LerpPosition(a.pos, b.pos, t);
 	v.color = LerpColor(a.color, b.color, t);
+	v.norm = LerpNormal(a.norm, b.norm, t);
+	v.worldPos = LerpPosition(a.worldPos, b.worldPos, t);
 
 	// because this is typically done in screen space, x and y should be pixel position
 	// to convert float to int/index it std::floar(pos.y + 0.5)

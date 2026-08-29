@@ -27,6 +27,7 @@ public:
 
 	void OnNewFrame();
 	void SetCullMode(CullMode mode);
+	void SetCorrectUV(bool correctUV);
 
 	// Start Accepting Vertices
 	bool BeginDraw(Topology topology, bool applyTransform);
@@ -43,6 +44,6 @@ private:
 	bool mDrawBegin = false;
 	CullMode mCullMode = CullMode::None;
 	bool mApplyTransform = false;
-
+	bool mCorrectUV = false;
 
 };

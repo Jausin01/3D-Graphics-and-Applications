@@ -26,7 +26,7 @@ void Camera::SetPosition(const Vector3& pos)
 
 void Camera::SetDirection(const Vector3& dir)
 {
-	mDir = dir;
+	mDir = MathHelper::Normalize(dir);
 }
 
 // internal info

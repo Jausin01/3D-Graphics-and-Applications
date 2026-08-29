@@ -1,0 +1,16 @@
+SetResolution(20,20,25,true)
+
+BeginDraw(line)
+
+Vertex(0,0, 1,0,0)
+Vertex(19,19, 0,0,1)
+
+Vertex(19,0, 0,1,0)
+Vertex(0,19, 1,0,1)
+
+
+
+
+
+EndDraw()
+
