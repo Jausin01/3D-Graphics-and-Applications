@@ -8,7 +8,8 @@
 #include "DepthBuffer.h"
 #include "MaterialManager.h"
 #include "LightManager.h"
-
+#include "PostProcessing.h"
+#include "RayTracer.h"
 
 void Graphics::NewFrame()
 {
@@ -20,5 +21,7 @@ void Graphics::NewFrame()
 	DepthBuffer::Get()->OnNewFrame();
 	LightManager::Get()->OnNewFrame();
 	MaterialManager::Get()->OnNewFrame();
+	PostProcessing::Get()->OnNewFrame();
+	RayTracer::Get()->OnNewFrame();
 	
 }

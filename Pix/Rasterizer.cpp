@@ -2,6 +2,7 @@
 #include "DepthBuffer.h"
 #include "LightManager.h"
 #include "TextureManager.h"
+#include "PostProcessing.h"
 
 // funtion for drawing a line where the slope is <= 1
 // left is the smaller x position, right is highest x position
@@ -76,7 +77,12 @@ void Rasterizer::DrawPoint(const Vertex& v)
 		{
 			pixelColor *= LightManager::Get()->ComputeLightColor(v.worldPos, v.norm);
 		}
-		X::DrawPixel(v.pos.x, v.pos.y, pixelColor);
+		// if not drawing to render target, draw to the screen
+		if (!PostProcessing::Get()->Draw(v.pos.x, v.pos.y, pixelColor))
+		{
+			X::DrawPixel(v.pos.x, v.pos.y, pixelColor);
+		}
+
 	}
 	
 }

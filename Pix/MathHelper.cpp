@@ -140,3 +140,30 @@ float MathHelper::Determinant(const Matrix4& m)
 	det -= (m._14 * (m._21 * (m._32 * m._43 - (m._42 * m._33)) - m._22 * (m._31 * m._43 - (m._41 * m._33)) + m._23 * (m._31 * m._42 - (m._41 * m._32))));
 	return det;
 }
+
+bool MathHelper::Intersect(const Ray& ray, const Sphere& sphere, float& distance)
+{
+	Vector3 v = sphere.origin - ray.origin;
+	float t = Dot(v, ray.direction);
+
+	Vector3 closestPoint = ray.origin + (ray.direction * t);
+	float closestPointToCenterSqr = MagnitudeSqr(closestPoint - sphere.origin);
+	float radiusSqr = sphere.radius * sphere.radius;
+	if (closestPointToCenterSqr > radiusSqr)
+	{
+		return false;
+	}
+
+	float oppositeSide = sqrt(radiusSqr - closestPointToCenterSqr);
+	// if ray is inside the sphere
+	if (MagnitudeSqr(v) < radiusSqr)
+	{
+		distance = t + oppositeSide;
+	}
+	// else ray is outside of the sphere
+	else
+	{
+		distance = t - oppositeSide;
+	}
+	return true;
+}

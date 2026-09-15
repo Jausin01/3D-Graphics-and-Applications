@@ -10,6 +10,8 @@ C:\Quarter5Backup\3D Applications\Pix\Pix\CmdLights.cpp;C:\Quarter5Backup\3D App
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdMaterial.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdMaterial.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdMatrixStack.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdMatrixStack.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdModel.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdModel.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\CmdPostProcessing.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdPostProcessing.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\CmdRayTracer.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdRayTracer.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdSetAddressMode.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdSetAddressMode.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdSetClipping.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdSetClipping.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\CmdSetColor.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\CmdSetColor.obj
@@ -38,8 +40,11 @@ C:\Quarter5Backup\3D Applications\Pix\Pix\MatrixStack.cpp;C:\Quarter5Backup\3D A
 C:\Quarter5Backup\3D Applications\Pix\Pix\Model.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Model.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\ModelManager.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\ModelManager.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\PixEditor.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\PixEditor.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\PostProcessing.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\PostProcessing.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\PrimitivesManager.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\PrimitivesManager.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\Rasterizer.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Rasterizer.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\RayTracer.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\RayTracer.obj
+C:\Quarter5Backup\3D Applications\Pix\Pix\RenderTarger.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\RenderTarger.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\ScriptParser.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\ScriptParser.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\TextEditor.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\TextEditor.obj
 C:\Quarter5Backup\3D Applications\Pix\Pix\Texture.cpp;C:\Quarter5Backup\3D Applications\Pix\Pix\x64\Debug\Texture.obj

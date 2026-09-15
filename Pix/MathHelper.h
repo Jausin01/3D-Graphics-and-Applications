@@ -3,6 +3,8 @@
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Matrix4.h"
+#include "Ray.h"
+#include "Sphere.h"
 
 namespace MathHelper
 {
@@ -36,5 +38,6 @@ namespace MathHelper
 	Matrix4 Adjoint(const Matrix4& m);
 	float Determinant(const Matrix4& m);
 
+	bool Intersect(const Ray& ray, const Sphere& sphere, float& distance);
 
 }

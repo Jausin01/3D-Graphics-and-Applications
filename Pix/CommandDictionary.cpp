@@ -24,6 +24,8 @@
 #include "CmdSetCorrectUV.h"
 #include "CmdSetUseFilter.h"
 #include "CmdSetAddressMode.h"
+#include "CmdPostProcessing.h"
+#include "CmdRayTracer.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -96,6 +98,18 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetCorrectUV>();
 	RegisterCommand<CmdSetUseFilter>();
 	RegisterCommand<CmdSetAddressMode>();
+
+	// post processing stuff
+	RegisterCommand<CmdPostProcessingBeginDraw>();
+	RegisterCommand<CmdPostProcessingEndDraw>();
+	RegisterCommand<CmdPostProcessingSetEffectType>();
+	RegisterCommand<CmdBeginRayTracing>();
+	RegisterCommand<CmdEndRayTracing>();
+	RegisterCommand<CmdRTLight>();
+	RegisterCommand<CmdRTSphere>();
+	
+	
+
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()

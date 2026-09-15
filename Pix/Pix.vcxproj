@@ -183,6 +183,8 @@
     <ClCompile Include="CmdMaterial.cpp" />
     <ClCompile Include="CmdMatrixStack.cpp" />
     <ClCompile Include="CmdModel.cpp" />
+    <ClCompile Include="CmdPostProcessing.cpp" />
+    <ClCompile Include="CmdRayTracer.cpp" />
     <ClCompile Include="CmdSetAddressMode.cpp" />
     <ClCompile Include="CmdSetClipping.cpp" />
     <ClCompile Include="CmdSetColor.cpp" />
@@ -211,8 +213,11 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="PixEditor.cpp" />
+    <ClCompile Include="PostProcessing.cpp" />
     <ClCompile Include="PrimitivesManager.cpp" />
     <ClCompile Include="Rasterizer.cpp" />
+    <ClCompile Include="RayTracer.cpp" />
+    <ClCompile Include="RenderTarger.cpp" />
     <ClCompile Include="ScriptParser.cpp" />
     <ClCompile Include="TextEditor.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -238,6 +243,8 @@
     <ClInclude Include="CmdMaterial.h" />
     <ClInclude Include="CmdMatrixStack.h" />
     <ClInclude Include="CmdModel.h" />
+    <ClInclude Include="CmdPostProcessing.h" />
+    <ClInclude Include="CmdRayTracer.h" />
     <ClInclude Include="CmdSetAddressMode.h" />
     <ClInclude Include="CmdSetClipping.h" />
     <ClInclude Include="CmdSetColor.h" />
@@ -265,9 +272,14 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="PixEditor.h" />
+    <ClInclude Include="PostProcessing.h" />
     <ClInclude Include="PrimitivesManager.h" />
     <ClInclude Include="Rasterizer.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="RayTracer.h" />
+    <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="ScriptParser.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="TextEditor.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureManager.h" />
